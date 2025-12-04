@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Models
 {
-    internal class Appointment
+    public class Appointment
     {
+        //TODO Appt Deets and UTC time
     }
 }

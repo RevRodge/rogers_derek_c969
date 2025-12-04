@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Models
 {
-    internal class Country
+    public class Country
     {
+        public int CountryId { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

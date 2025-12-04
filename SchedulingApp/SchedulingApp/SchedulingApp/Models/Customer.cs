@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Models
 {
-    internal class Customer
+    namespace SchedulingApp.Models
     {
+        public class Customer
+        {
+            public int CustomerId { get; set; }
+            public string CustomerName { get; set; } = string.Empty;
+            public int AddressId { get; set; }
+            public bool Active { get; set; }
+
+            //TODO Add detailed address get/sets
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Models
 {
-    internal class Address
+    public class Address
     {
+        //TODO Add detailed Address get/sets
     }
 }
