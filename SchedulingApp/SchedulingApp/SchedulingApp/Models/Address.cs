@@ -8,6 +8,11 @@ namespace SchedulingApp.Models
 {
     public class Address
     {
-        //TODO Add detailed Address get/sets
+        public int AddressId { get; set; }
+        public string AddressLine1 { get; set; } = string.Empty;
+        public string AddressLine2 { get; set; } = string.Empty;
+        public int CityId { get; set; }
+        public string PostalCode { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
     }
 }

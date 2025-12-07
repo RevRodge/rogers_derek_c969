@@ -8,6 +8,15 @@ namespace SchedulingApp.Models
 {
     public class Appointment
     {
-        //TODO Appt Deets and UTC time
+        public int AppointmentId { get; set; }
+        public int CustomerId { get; set; }
+        public int UserId { get; set; }
+        public string Type { get; set; } = string.Empty;
+        public DateTime StartUtc { get; set; }
+        public DateTime EndUtc { get; set; }
+
+        //for convenience
+        public string CustomerName { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
     }
 }
