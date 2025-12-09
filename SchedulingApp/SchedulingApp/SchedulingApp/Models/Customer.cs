@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Models
 {
-    namespace SchedulingApp.Models
+    public class Customer
     {
-        public class Customer
-        {
-            public int CustomerId { get; set; }
-            public string CustomerName { get; set; } = string.Empty;
-            public int AddressId { get; set; }
-            public bool Active { get; set; }
+        public int CustomerId { get; set; }
+        public string CustomerName { get; set; } = string.Empty;
+        public int AddressId { get; set; }
+        public bool Active { get; set; }
+        // Address fields (from joined SELECT)
+        public string AddressLine1 { get; set; } = string.Empty;
+        public string AddressLine2 { get; set; } = string.Empty;
+        public int CityId { get; set; }
+        public string CityName { get; set; } = string.Empty;
+        public string CountryName { get; set; } = string.Empty;
+        public string PostalCode { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
 
-            //TODO Add detailed address get/sets
-        }
     }
+    
 }
