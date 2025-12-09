@@ -62,17 +62,34 @@ namespace SchedulingApp.Data
         }
 
 
-        //Adds a new customer and its address (requires transaction).
+        //adds new customer and its address
         public void Add(Customer c)
         {
-            // TODO: INSERT into address, then into customer
+            // quick null check before attempting to add to db
+            if (c == null)
+                throw new ArgumentNullException(nameof(c));
+
+            //open connection to db
+            using (var conn = DbConnectionFactory.CreateOpenConnection())
+            using (var tx = conn.BeginTransaction())
+            {
+                //TODO: Write function
+            }
         }
 
-        // Updates a customer and its address.
 
+        // updates a customer and its address
         public void Update(Customer c)
         {
-            // TODO: UPDATE address + UPDATE customer
+            if (c == null)
+                throw new ArgumentNullException(nameof(c));
+
+            //open connection to db
+            using (var conn = DbConnectionFactory.CreateOpenConnection())
+            using (var tx = conn.BeginTransaction())
+            {
+                //TODO: Write function
+            }
         }
 
 
@@ -80,7 +97,12 @@ namespace SchedulingApp.Data
 
         public void Delete(int customerId)
         {
-            // TODO: DELETE from customer (might need foreign key checks)
+            //open connection to db
+            using (var conn = DbConnectionFactory.CreateOpenConnection())
+            using (var tx = conn.BeginTransaction())
+            {
+                //TODO: Write function
+            }
         }
     }
 }
