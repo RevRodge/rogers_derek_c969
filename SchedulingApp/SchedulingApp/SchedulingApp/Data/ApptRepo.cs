@@ -10,7 +10,7 @@ namespace SchedulingApp.Data
 {
     public class ApptRepo
     {
-        // Returns all appointments joined with customers and users.
+        // Returns all appointments joined with customers and users
         public List<Appointment> GetAll()
         {
             var result = new List<Appointment>();
@@ -48,7 +48,7 @@ namespace SchedulingApp.Data
             return result;
         }
 
-        // Finds upcoming appointments for login alert.
+        // Finds upcoming appointments for login alerts
         public List<Appointment> GetForUserBetween(int userId, DateTime startUtc, DateTime endUtc)
         {
             var result = new List<Appointment>();
@@ -87,8 +87,8 @@ namespace SchedulingApp.Data
             return result;
         }
 
-        // Checks for overlapping appointments for a customer.
-        // Requirement A3A2.
+        // Checks for overlapping appointments for a customer
+        // Requirement A3A2
         public bool HasOverlappingAppointment(int customerId, int? appointmentId, DateTime startUtc, DateTime endUtc)
         {
             const string sql = @"
