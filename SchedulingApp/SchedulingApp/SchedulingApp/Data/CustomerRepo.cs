@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using SchedulingApp.Models;
-using SchedulingApp.Models.SchedulingApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +72,60 @@ namespace SchedulingApp.Data
             using (var conn = DbConnectionFactory.CreateOpenConnection())
             using (var tx = conn.BeginTransaction())
             {
-                //TODO: Write function
+                try
+                {
+                    // Insert into address table
+                    const string insertAddressSql = @"
+                        INSERT INTO address
+                            (address, address2, cityId, postalCode, phone, 
+                             createDate, createdBy, lastUpdate, lastUpdateBy)
+                        VALUES
+                            (@address1, @address2, @cityId, @postal, @phone,
+                             NOW(), 'system', NOW(), 'system');
+                    ";
+
+                    long newAddressId;
+
+                    using (var cmdAddress = new MySqlCommand(insertAddressSql, conn, tx))
+                    {
+                        cmdAddress.Parameters.AddWithValue("@address1", c.AddressLine1);
+                        cmdAddress.Parameters.AddWithValue("@address2", c.AddressLine2);
+                        cmdAddress.Parameters.AddWithValue("@cityId", c.CityId);
+                        cmdAddress.Parameters.AddWithValue("@postal", c.PostalCode);
+                        cmdAddress.Parameters.AddWithValue("@phone", c.Phone);
+
+                        cmdAddress.ExecuteNonQuery();
+                        newAddressId = cmdAddress.LastInsertedId;
+                    }
+
+                    // Insert into customer table using the new addressId
+                    const string insertCustomerSql = @"
+                        INSERT INTO customer
+                            (customerName, addressId, active, 
+                             createDate, createdBy, lastUpdate, lastUpdateBy)
+                        VALUES
+                            (@name, @addressId, @active,
+                             NOW(), 'system', NOW(), 'system');
+                    ";
+
+                    using (var cmdCustomer = new MySqlCommand(insertCustomerSql, conn, tx))
+                    {
+                        cmdCustomer.Parameters.AddWithValue("@name", c.CustomerName);
+                        cmdCustomer.Parameters.AddWithValue("@addressId", newAddressId);
+                        cmdCustomer.Parameters.AddWithValue("@active", c.Active ? 1 : 0);
+
+                        cmdCustomer.ExecuteNonQuery();
+                    }
+
+                    // if all good, commit the transaction
+                    tx.Commit();
+                }
+                catch
+                {
+                    // if something went wrong, roll everything back
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -88,7 +140,61 @@ namespace SchedulingApp.Data
             using (var conn = DbConnectionFactory.CreateOpenConnection())
             using (var tx = conn.BeginTransaction())
             {
-                //TODO: Write function
+                try
+                {
+                    // Update address row
+                    const string updateAddressSql = @"
+                        UPDATE address
+                        SET
+                            address      = @address1,
+                            address2     = @address2,
+                            cityId       = @cityId,
+                            postalCode   = @postal,
+                            phone        = @phone,
+                            lastUpdate   = NOW(),
+                            lastUpdateBy = 'system'
+                        WHERE addressId = @addressId;
+                    ";
+
+                    using (var cmdAddress = new MySqlCommand(updateAddressSql, conn, tx))
+                    {
+                        cmdAddress.Parameters.AddWithValue("@address1", c.AddressLine1);
+                        cmdAddress.Parameters.AddWithValue("@address2", c.AddressLine2);
+                        cmdAddress.Parameters.AddWithValue("@cityId", c.CityId);
+                        cmdAddress.Parameters.AddWithValue("@postal", c.PostalCode);
+                        cmdAddress.Parameters.AddWithValue("@phone", c.Phone);
+                        cmdAddress.Parameters.AddWithValue("@addressId", c.AddressId);
+
+                        cmdAddress.ExecuteNonQuery();
+                    }
+
+                    // Update customer row
+                    const string updateCustomerSql = @"
+                        UPDATE customer
+                        SET
+                            customerName = @name,
+                            active       = @active,
+                            lastUpdate   = NOW(),
+                            lastUpdateBy = 'system'
+                        WHERE customerId = @customerId;
+                    ";
+
+                    using (var cmdCustomer = new MySqlCommand(updateCustomerSql, conn, tx))
+                    {
+                        cmdCustomer.Parameters.AddWithValue("@name", c.CustomerName);
+                        cmdCustomer.Parameters.AddWithValue("@active", c.Active ? 1 : 0);
+                        cmdCustomer.Parameters.AddWithValue("@customerId", c.CustomerId);
+
+                        cmdCustomer.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                }
+                catch
+                {
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
 
@@ -101,7 +207,28 @@ namespace SchedulingApp.Data
             using (var conn = DbConnectionFactory.CreateOpenConnection())
             using (var tx = conn.BeginTransaction())
             {
-                //TODO: Write function
+                try
+                {
+                    // If FK constraints exist to appointments, this will throw
+                    // and should be caught in the UI layer to show a friendly message.
+                    const string deleteCustomerSql = @"
+                        DELETE FROM customer
+                        WHERE customerId = @customerId;
+                    ";
+
+                    using (var cmdCustomer = new MySqlCommand(deleteCustomerSql, conn, tx))
+                    {
+                        cmdCustomer.Parameters.AddWithValue("@customerId", customerId);
+                        cmdCustomer.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                }
+                catch
+                {
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
     }
