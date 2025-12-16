@@ -14,7 +14,8 @@ namespace SchedulingApp.Data
         private const string ConnectionString =
             "server=localhost;user id=YOUR_USER;password=YOUR_PASSWORD;database=YOUR_DB;";
 
-        public static MySqlConnection CreateOpenConnection() //connects to db for joins and pulls
+        //connects to db for joins and pulls
+        public static MySqlConnection CreateOpenConnection() 
         {
             var conn = new MySqlConnection(ConnectionString);
             conn.Open();

@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace SchedulingApp.Data
 {
-    public class UserRepository
+    public class UserRepo
     {
+        // validates username/password against user table
         public User ValidateUser(string username, string password)
         {
             const string sql = @"
