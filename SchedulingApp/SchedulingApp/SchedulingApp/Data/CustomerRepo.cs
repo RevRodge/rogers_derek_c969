@@ -31,8 +31,7 @@ namespace SchedulingApp.Data
                 FROM customer
                 INNER JOIN address ON customer.addressId = address.addressId
                 INNER JOIN city ON address.cityId = city.cityId
-                INNER JOIN country ON city.countryId = country.countryId;
-            ";
+                INNER JOIN country ON city.countryId = country.countryId; ";
 
             using (var conn = DbConnectionFactory.CreateOpenConnection())
             using (var cmd = new MySqlCommand(sql, conn))
@@ -60,6 +59,7 @@ namespace SchedulingApp.Data
             return result;
         }
 
+        //adds new customer and its address
 
         //adds new customer and its address
         public void Add(Customer c)
@@ -81,8 +81,7 @@ namespace SchedulingApp.Data
                              createDate, createdBy, lastUpdate, lastUpdateBy)
                         VALUES
                             (@address1, @address2, @cityId, @postal, @phone,
-                             NOW(), 'system', NOW(), 'system');
-                    ";
+                             NOW(), 'system', NOW(), 'system'); ";
 
                     long newAddressId;
 
@@ -105,8 +104,7 @@ namespace SchedulingApp.Data
                              createDate, createdBy, lastUpdate, lastUpdateBy)
                         VALUES
                             (@name, @addressId, @active,
-                             NOW(), 'system', NOW(), 'system');
-                    ";
+                             NOW(), 'system', NOW(), 'system'); ";
 
                     using (var cmdCustomer = new MySqlCommand(insertCustomerSql, conn, tx))
                     {
@@ -153,8 +151,7 @@ namespace SchedulingApp.Data
                             phone        = @phone,
                             lastUpdate   = NOW(),
                             lastUpdateBy = 'system'
-                        WHERE addressId = @addressId;
-                    ";
+                        WHERE addressId = @addressId;";
 
                     using (var cmdAddress = new MySqlCommand(updateAddressSql, conn, tx))
                     {
@@ -176,8 +173,7 @@ namespace SchedulingApp.Data
                             active       = @active,
                             lastUpdate   = NOW(),
                             lastUpdateBy = 'system'
-                        WHERE customerId = @customerId;
-                    ";
+                        WHERE customerId = @customerId;";
 
                     using (var cmdCustomer = new MySqlCommand(updateCustomerSql, conn, tx))
                     {

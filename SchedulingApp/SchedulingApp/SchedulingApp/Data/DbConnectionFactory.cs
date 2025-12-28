@@ -12,7 +12,7 @@ namespace SchedulingApp.Data
     {
         // TODO: replace with actual db settings from lab vm
         private const string ConnectionString =
-            "server=localhost;user id=YOUR_USER;password=YOUR_PASSWORD;database=YOUR_DB;";
+            "Server=localhost;Port=3306;database=client_schedule;Uid=sqlUser;Pwd=Passw0rd!;";
 
         //connects to db for joins and pulls
         public static MySqlConnection CreateOpenConnection() 
