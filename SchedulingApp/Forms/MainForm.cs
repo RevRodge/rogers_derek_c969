@@ -162,13 +162,27 @@ namespace SchedulingApp.Forms
         }
 
         // -------------- Buttons --------------------
-        
-        //TODO: Wire buttons
+
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Customer Add form not wired yet.", "Info",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new CustomerForm())
+            {
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _customerRepo.Add(form.Customer);
+                    LoadCustomers();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError("Add customer failed", ex);
+                    MessageBox.Show("Unable to add customer.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
@@ -177,8 +191,23 @@ namespace SchedulingApp.Forms
             if (selected == null)
                 return;
 
-            MessageBox.Show("Customer Modify form not wired yet.", "Info",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new CustomerForm(selected))
+            {
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _customerRepo.Update(form.Customer);
+                    LoadCustomers();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError("Update customer failed", ex);
+                    MessageBox.Show("Unable to update customer.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnDeleteCustomer_Click(object sender, EventArgs e)
@@ -210,7 +239,7 @@ namespace SchedulingApp.Forms
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        // TODO: Wire appt buttons
         private void btnAddAppt_Click(object sender, EventArgs e)
         {
             MessageBox.Show(" FIX MEEEE Appointment Add form not wired yet.", "AHHH",
