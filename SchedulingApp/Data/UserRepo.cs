@@ -44,5 +44,29 @@ namespace SchedulingApp.Data
 
             return null;
         }
+
+        public List<User> GetAll()
+        {
+            var result = new List<User>();
+
+            const string sql = @"SELECT userId, userName FROM user ORDER BY userName;";
+
+            using (var conn = DbConnectionFactory.CreateOpenConnection())
+            using (var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn))
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result.Add(new User
+                    {
+                        UserId = reader.GetInt32("userId"),
+                        UserName = reader.GetString("userName")
+                    });
+                }
+            }
+
+            return result;
+        }
+
     }
 }
