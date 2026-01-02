@@ -18,11 +18,13 @@ namespace SchedulingApp.Forms
         private readonly User _currentUser;
 
         private readonly CustomerRepo _customerRepo = new CustomerRepo();
+        private readonly UserRepo _userRepo = new UserRepo();
         private readonly ApptRepo _apptRepo = new ApptRepo();
 
         private List<Customer> _customers = new List<Customer>();
+        private List<User> _users = new List<User>();
         private List<Appointment> _appointments = new List<Appointment>();
-
+        
         public MainForm(User user)
         {
             InitializeComponent();
@@ -40,19 +42,21 @@ namespace SchedulingApp.Forms
             btnAddAppt.Click += btnAddAppt_Click;
             btnEditAppt.Click += btnEditAppt_Click;
             btnDeleteAppt.Click += btnDeleteAppt_Click;
+            btnCalendar.Click += btnCalendar_Click;
+
+            //load init data
+            LoadCustomers();
+            LoadUsers();
+            LoadAppointments();
 
             //update some buttons when selections are made
             dgvCustomers.SelectionChanged += (s, e) => UpdateCustomerButtons();
             dgvAppointments.SelectionChanged += (s, e) => UpdateAppointmentButtons();
 
-            //load init data
-            LoadCustomers();
-            LoadAppointments();
-
             UpdateCustomerButtons();
             UpdateAppointmentButtons();
         }
-        // data grid view setup functions
+        // ----------- data grid view setup ------------
         private void ConfigureCustomerGrid()
         {
             dgvCustomers.AutoGenerateColumns = true;
@@ -71,7 +75,7 @@ namespace SchedulingApp.Forms
             dgvAppointments.AllowUserToAddRows = false;
             dgvAppointments.AllowUserToDeleteRows = false;
         }
-        // ------------- Populate Form ---------------
+        // ------------- Populate ---------------
         private void LoadCustomers()
         {
             try
@@ -91,6 +95,22 @@ namespace SchedulingApp.Forms
                 Logger.LogError("LoadCustomers failed", ex);
                 MessageBox.Show("Unable to load customers.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadUsers()
+        {
+            try
+            {
+                _users = _userRepo.GetAll();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("LoadUsers failed", ex);
+                MessageBox.Show("Unable to load users.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                _users = new List<User>();
             }
         }
 
@@ -130,7 +150,7 @@ namespace SchedulingApp.Forms
             }
         }
 
-        // -------------- Pulling Data -----------------
+        // -------------- Data Requests-----------------
         private Customer GetSelectedCustomer()
         {
             if (dgvCustomers.CurrentRow == null)
@@ -239,11 +259,27 @@ namespace SchedulingApp.Forms
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // TODO: Wire appt buttons
+
         private void btnAddAppt_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(" FIX MEEEE Appointment Add form not wired yet.", "AHHH",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new AppointmentForm(_customers, _users))
+            {
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _apptRepo.Add(form.Appointment);
+                    LoadAppointments();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError("Add appointment failed", ex);
+                    MessageBox.Show("Unable to add appointment.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
         }
 
         private void btnEditAppt_Click(object sender, EventArgs e)
@@ -252,8 +288,25 @@ namespace SchedulingApp.Forms
             if (!apptId.HasValue)
                 return;
 
-            MessageBox.Show("FIX MEEE Appointment Modify form not wired yet.", "OH NO",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var appt = _appointments.First(a => a.AppointmentId == apptId.Value);
+
+            using (var form = new AppointmentForm(appt, _customers, _users))
+            {
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    _apptRepo.Update(form.Appointment);
+                    LoadAppointments();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError("Update appointment failed", ex);
+                    MessageBox.Show("Unable to update appointment.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnDeleteAppt_Click(object sender, EventArgs e)
@@ -298,5 +351,12 @@ namespace SchedulingApp.Forms
             btnDeleteAppt.Enabled = hasSelection;
         }
 
+        private void btnCalendar_Click(object sender, EventArgs e)
+        {
+            using (var form = new CalendarForm())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }
