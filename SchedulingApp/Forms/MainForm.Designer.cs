@@ -16,6 +16,7 @@
         private System.Windows.Forms.Button btnEditAppt;
         private System.Windows.Forms.Button btnDeleteAppt;
         private System.Windows.Forms.Button btnCalendar;
+        private System.Windows.Forms.Button btnReports;
 
 
         /// <summary>
@@ -42,6 +43,7 @@
             this.btnEditAppt = new System.Windows.Forms.Button();
             this.btnDeleteAppt = new System.Windows.Forms.Button();
             this.btnCalendar = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +116,7 @@
             // 
             // btnCalendar
             // 
-            this.btnCalendar.Location = new System.Drawing.Point(431, 230);
+            this.btnCalendar.Location = new System.Drawing.Point(596, 230);
             this.btnCalendar.Name = "btnCalendar";
             this.btnCalendar.Size = new System.Drawing.Size(89, 30);
             this.btnCalendar.TabIndex = 8;
@@ -122,9 +124,19 @@
             this.btnCalendar.UseVisualStyleBackColor = true;
             this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 
+            // btnReports
+            // 
+            this.btnReports.Location = new System.Drawing.Point(691, 230);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(89, 29);
+            this.btnReports.TabIndex = 9;
+            this.btnReports.Text = "Reports";
+            this.btnReports.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnCalendar);
             this.Controls.Add(this.btnDeleteAppt);
             this.Controls.Add(this.btnEditAppt);
@@ -141,7 +153,6 @@
             this.ResumeLayout(false);
 
         }
-
         
     }
 }

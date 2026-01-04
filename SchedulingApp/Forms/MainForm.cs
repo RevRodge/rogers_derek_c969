@@ -44,6 +44,7 @@ namespace SchedulingApp.Forms
             btnEditAppt.Click += btnEditAppt_Click;
             btnDeleteAppt.Click += btnDeleteAppt_Click;
             btnCalendar.Click += btnCalendar_Click;
+            btnReports.Click += btnReports_Click;
 
             //load init data
             LoadCustomers();
@@ -352,9 +353,19 @@ namespace SchedulingApp.Forms
             btnDeleteAppt.Enabled = hasSelection;
         }
 
+        //opens calendar form
         private void btnCalendar_Click(object sender, EventArgs e)
         {
             using (var form = new CalendarForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        //opens reports form
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            using (var form = new ReportsForm())
             {
                 form.ShowDialog();
             }
