@@ -43,7 +43,8 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(40, 30);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.Size = new System.Drawing.Size(55, 13);
+            this.lblUsername.TabIndex = 6;
             this.lblUsername.Text = "Username";
             // 
             // lblPassword
@@ -52,6 +53,7 @@
             this.lblPassword.Location = new System.Drawing.Point(40, 70);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
             // txtUsername
@@ -59,6 +61,7 @@
             this.txtUsername.Location = new System.Drawing.Point(120, 27);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(180, 20);
+            this.txtUsername.TabIndex = 4;
             // 
             // txtPassword
             // 
@@ -66,24 +69,25 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(180, 20);
+            this.txtPassword.TabIndex = 3;
             // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(120, 110);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(80, 30);
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(220, 110);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 30);
+            this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblZone
             // 
@@ -91,6 +95,7 @@
             this.lblZone.Location = new System.Drawing.Point(40, 160);
             this.lblZone.Name = "lblZone";
             this.lblZone.Size = new System.Drawing.Size(0, 13);
+            this.lblZone.TabIndex = 0;
             // 
             // LoginForm
             // 

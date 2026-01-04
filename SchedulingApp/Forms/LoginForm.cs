@@ -21,7 +21,10 @@ namespace SchedulingApp.Forms
         public LoginForm()
         {
             InitializeComponent();
-            
+
+            btnLogin.Click += btnLogin_Click;
+            btnExit.Click += btnExit_Click;
+
             //displays local timezone on login screen
             //cutting if it doesn't work
             try
