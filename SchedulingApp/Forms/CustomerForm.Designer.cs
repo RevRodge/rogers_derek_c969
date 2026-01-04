@@ -50,93 +50,115 @@
             this.lblCityId = new System.Windows.Forms.Label();
             this.lblPostalCode = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
-
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.txtCityId = new System.Windows.Forms.TextBox();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
-
             this.chkActive = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-
             this.SuspendLayout();
-
+            // 
             // lblCustomerName
+            // 
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Location = new System.Drawing.Point(20, 10);
             this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(82, 13);
+            this.lblCustomerName.TabIndex = 0;
             this.lblCustomerName.Text = "Customer Name";
-
+            // 
+            // lblAddress1
+            // 
+            this.lblAddress1.AutoSize = true;
+            this.lblAddress1.Location = new System.Drawing.Point(20, 60);
+            this.lblAddress1.Name = "lblAddress1";
+            this.lblAddress1.Size = new System.Drawing.Size(77, 13);
+            this.lblAddress1.TabIndex = 1;
+            this.lblAddress1.Text = "Address Line 1";
+            // 
+            // lblAddress2
+            // 
+            this.lblAddress2.AutoSize = true;
+            this.lblAddress2.Location = new System.Drawing.Point(20, 110);
+            this.lblAddress2.Name = "lblAddress2";
+            this.lblAddress2.Size = new System.Drawing.Size(77, 13);
+            this.lblAddress2.TabIndex = 2;
+            this.lblAddress2.Text = "Address Line 2";
+            // 
+            // lblCityId
+            // 
+            this.lblCityId.AutoSize = true;
+            this.lblCityId.Location = new System.Drawing.Point(20, 160);
+            this.lblCityId.Name = "lblCityId";
+            this.lblCityId.Size = new System.Drawing.Size(38, 13);
+            this.lblCityId.TabIndex = 3;
+            this.lblCityId.Text = "City ID";
+            // 
+            // lblPostalCode
+            // 
+            this.lblPostalCode.AutoSize = true;
+            this.lblPostalCode.Location = new System.Drawing.Point(160, 160);
+            this.lblPostalCode.Name = "lblPostalCode";
+            this.lblPostalCode.Size = new System.Drawing.Size(64, 13);
+            this.lblPostalCode.TabIndex = 4;
+            this.lblPostalCode.Text = "Postal Code";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(20, 210);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(38, 13);
+            this.lblPhone.TabIndex = 5;
+            this.lblPhone.Text = "Phone";
+            // 
             // txtCustomerName
+            // 
             this.txtCustomerName.Location = new System.Drawing.Point(20, 30);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(300, 20);
             this.txtCustomerName.TabIndex = 0;
-
-            // lblAddress1
-            this.lblAddress1.AutoSize = true;
-            this.lblAddress1.Location = new System.Drawing.Point(20, 60);
-            this.lblAddress1.Name = "lblAddress1";
-            this.lblAddress1.Text = "Address Line 1";
-
+            // 
             // txtAddress1
+            // 
             this.txtAddress1.Location = new System.Drawing.Point(20, 80);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(300, 20);
             this.txtAddress1.TabIndex = 1;
-
-            // lblAddress2
-            this.lblAddress2.AutoSize = true;
-            this.lblAddress2.Location = new System.Drawing.Point(20, 110);
-            this.lblAddress2.Name = "lblAddress2";
-            this.lblAddress2.Text = "Address Line 2";
-
+            // 
             // txtAddress2
+            // 
             this.txtAddress2.Location = new System.Drawing.Point(20, 130);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(300, 20);
             this.txtAddress2.TabIndex = 2;
-
-            // lblCityId
-            this.lblCityId.AutoSize = true;
-            this.lblCityId.Location = new System.Drawing.Point(20, 160);
-            this.lblCityId.Name = "lblCityId";
-            this.lblCityId.Text = "City ID";
-
-            // lblPostalCode
-            this.lblPostalCode.AutoSize = true;
-            this.lblPostalCode.Location = new System.Drawing.Point(160, 160);
-            this.lblPostalCode.Name = "lblPostalCode";
-            this.lblPostalCode.Text = "Postal Code";
-
+            // 
             // txtCityId
+            // 
             this.txtCityId.Location = new System.Drawing.Point(20, 180);
             this.txtCityId.Name = "txtCityId";
             this.txtCityId.Size = new System.Drawing.Size(120, 20);
             this.txtCityId.TabIndex = 3;
-
+            // 
             // txtPostalCode
+            // 
             this.txtPostalCode.Location = new System.Drawing.Point(160, 180);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(160, 20);
             this.txtPostalCode.TabIndex = 4;
-
-            // lblPhone
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(20, 210);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Text = "Phone";
-
+            // 
             // txtPhone
+            // 
             this.txtPhone.Location = new System.Drawing.Point(20, 230);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(300, 20);
             this.txtPhone.TabIndex = 5;
-
-            // chkActive (moved down so it doesn't overlap City/Postal row)
+            // 
+            // chkActive
+            // 
             this.chkActive.AutoSize = true;
             this.chkActive.Location = new System.Drawing.Point(20, 260);
             this.chkActive.Name = "chkActive";
@@ -144,51 +166,50 @@
             this.chkActive.TabIndex = 6;
             this.chkActive.Text = "Active";
             this.chkActive.UseVisualStyleBackColor = true;
-
-            // btnSave (moved down so it doesn't overlap Phone textbox)
+            // 
+            // btnSave
+            // 
             this.btnSave.Location = new System.Drawing.Point(160, 290);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // btnCancel
+            // 
             this.btnCancel.Location = new System.Drawing.Point(245, 290);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 28);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // CustomerForm
+            // 
             this.ClientSize = new System.Drawing.Size(350, 335);
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.txtCustomerName);
-
             this.Controls.Add(this.lblAddress1);
             this.Controls.Add(this.txtAddress1);
-
             this.Controls.Add(this.lblAddress2);
             this.Controls.Add(this.txtAddress2);
-
             this.Controls.Add(this.lblCityId);
             this.Controls.Add(this.txtCityId);
-
             this.Controls.Add(this.lblPostalCode);
             this.Controls.Add(this.txtPostalCode);
-
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.txtPhone);
-
             this.Controls.Add(this.chkActive);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-
             this.Name = "CustomerForm";
             this.Text = "Customer";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }

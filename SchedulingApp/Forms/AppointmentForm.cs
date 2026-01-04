@@ -35,6 +35,9 @@ namespace SchedulingApp.Forms
 
             BindDropdowns();
 
+            //wire and label buttons
+            btnSave.Click += btnSave_Click;
+            btnCancel.Click += btnCancel_Click;
             btnSave.Text = Strings.BtnSave;
             btnCancel.Text = Strings.BtnCancel;
         }

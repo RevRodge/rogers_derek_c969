@@ -20,10 +20,13 @@ namespace SchedulingApp.Forms
         {
             InitializeComponent();
 
-            //TODO: Needs es lang support
+
             Text = "Add Customer";
             chkActive.Checked = true;
 
+            //wiring and labeling buttons
+            btnSave.Click += btnSave_Click;
+            btnCancel.Click += btnCancel_Click;
             btnSave.Text = Strings.BtnSave;
             btnCancel.Text = Strings.BtnCancel;
         }
@@ -32,8 +35,11 @@ namespace SchedulingApp.Forms
         {
             InitializeComponent();
 
-            //TODO: Needs es lang support
             Text = "Modify Customer";
+
+            //wiring and labeling buttons
+            btnSave.Click += btnSave_Click;
+            btnCancel.Click += btnCancel_Click;
             btnSave.Text = Strings.BtnSave;
             btnCancel.Text = Strings.BtnCancel;
 

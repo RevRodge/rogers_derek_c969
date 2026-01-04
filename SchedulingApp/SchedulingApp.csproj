@@ -151,6 +151,12 @@
     <Compile Include="Utilities\Logger.cs" />
     <Compile Include="Utilities\TimeZoneHelper.cs" />
     <Compile Include="Utilities\Validator.cs" />
+    <EmbeddedResource Include="Forms\AppointmentForm.resx">
+      <DependentUpon>AppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
