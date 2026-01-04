@@ -73,7 +73,7 @@
             this.btnAddCustomer.Size = new System.Drawing.Size(100, 30);
             this.btnAddCustomer.TabIndex = 5;
             this.btnAddCustomer.Text = "Add";
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+
             // 
             // btnEditCustomer
             // 
@@ -82,7 +82,7 @@
             this.btnEditCustomer.Size = new System.Drawing.Size(100, 30);
             this.btnEditCustomer.TabIndex = 4;
             this.btnEditCustomer.Text = "Modify";
-            this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
+
             // 
             // btnDeleteCustomer
             // 
@@ -91,7 +91,7 @@
             this.btnDeleteCustomer.Size = new System.Drawing.Size(100, 30);
             this.btnDeleteCustomer.TabIndex = 3;
             this.btnDeleteCustomer.Text = "Delete";
-            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
+
             // 
             // btnAddAppt
             // 
@@ -100,7 +100,7 @@
             this.btnAddAppt.Size = new System.Drawing.Size(100, 30);
             this.btnAddAppt.TabIndex = 2;
             this.btnAddAppt.Text = "Add Appointment";
-            this.btnAddAppt.Click += new System.EventHandler(this.btnAddAppt_Click);
+
             // 
             // btnEditAppt
             // 
@@ -109,7 +109,7 @@
             this.btnEditAppt.Size = new System.Drawing.Size(120, 30);
             this.btnEditAppt.TabIndex = 1;
             this.btnEditAppt.Text = "Modify Appointment";
-            this.btnEditAppt.Click += new System.EventHandler(this.btnEditAppt_Click);
+
             // 
             // btnDeleteAppt
             // 
@@ -118,7 +118,7 @@
             this.btnDeleteAppt.Size = new System.Drawing.Size(120, 30);
             this.btnDeleteAppt.TabIndex = 0;
             this.btnDeleteAppt.Text = "Delete Appointment";
-            this.btnDeleteAppt.Click += new System.EventHandler(this.btnDeleteAppt_Click);
+
             // 
             // btnCalendar
             // 
@@ -128,7 +128,7 @@
             this.btnCalendar.TabIndex = 8;
             this.btnCalendar.Text = "Calendar";
             this.btnCalendar.UseVisualStyleBackColor = true;
-            this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
+
             // 
             // btnReports
             // 
@@ -138,7 +138,7 @@
             this.btnReports.TabIndex = 9;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+
             // 
             // MainForm
             // 
