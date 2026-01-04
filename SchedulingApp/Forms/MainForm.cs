@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Models;
+﻿using SchedulingApp;
+using SchedulingApp.Models;
 using SchedulingApp.Utilities;
 using SchedulingApp.Data;
 using System;
@@ -93,6 +94,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadCustomers failed", ex);
+                //TODO: Needs es lang support
                 MessageBox.Show("Unable to load customers.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -107,6 +109,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadUsers failed", ex);
+                //TODO: Needs es lang support
                 MessageBox.Show("Unable to load users.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -145,6 +148,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadAppointments failed", ex);
+                //TODO: Needs es lang support
                 MessageBox.Show("Unable to load appointments.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -199,7 +203,7 @@ namespace SchedulingApp.Forms
                 catch (Exception ex)
                 {
                     Logger.LogError("Add customer failed", ex);
-                    MessageBox.Show("Unable to add customer.", "Error",
+                    MessageBox.Show(Strings.CustomerAddError, Strings.ErrorTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -224,7 +228,7 @@ namespace SchedulingApp.Forms
                 catch (Exception ex)
                 {
                     Logger.LogError("Update customer failed", ex);
-                    MessageBox.Show("Unable to update customer.", "Error",
+                    MessageBox.Show(Strings.CustomerUpdateError, Strings.ErrorTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -237,8 +241,8 @@ namespace SchedulingApp.Forms
                 return;
 
             var confirm = MessageBox.Show(
-                $"Delete customer '{selected.CustomerName}'?",
-                "Confirm",
+                string.Format(Strings.CustomerDeleteConfirm, selected.CustomerName),
+                Strings.ConfirmTitle,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
@@ -254,9 +258,9 @@ namespace SchedulingApp.Forms
             {
                 Logger.LogError("Delete customer failed", ex);
 
-                // Common case: FK constraint because customer has appointments
-                MessageBox.Show("Unable to delete customer. They may have appointments.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Common fail case: FK constraint because customer has appointments
+                MessageBox.Show(Strings.CustomerDeleteErrorHasAppts, Strings.ErrorTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -275,7 +279,7 @@ namespace SchedulingApp.Forms
                 catch (Exception ex)
                 {
                     Logger.LogError("Add appointment failed", ex);
-                    MessageBox.Show("Unable to add appointment.", "Error",
+                    MessageBox.Show(Strings.ApptAddError, Strings.ErrorTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -303,7 +307,7 @@ namespace SchedulingApp.Forms
                 catch (Exception ex)
                 {
                     Logger.LogError("Update appointment failed", ex);
-                    MessageBox.Show("Unable to update appointment.", "Error",
+                    MessageBox.Show(Strings.ApptUpdateError, Strings.ErrorTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -316,8 +320,8 @@ namespace SchedulingApp.Forms
                 return;
 
             var confirm = MessageBox.Show(
-                "Delete selected appointment?",
-                "Confirm",
+                Strings.ApptDeleteConfirm,
+                Strings.ConfirmTitle,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
@@ -332,7 +336,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("Delete appointment failed", ex);
-                MessageBox.Show("Unable to delete appointment.", "Error",
+                MessageBox.Show(Strings.ApptDeleteError, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Data;
+﻿using SchedulingApp;
+using SchedulingApp.Data;
 using SchedulingApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,8 @@ namespace SchedulingApp.Forms
 
         private void ShowAppointmentsForDate(DateTime selectedDateLocal)
         {
-            lblSelectedDate.Text = "Appointments for: " + selectedDateLocal.ToShortDateString();
+            lblSelectedDate.Text = string.Format(Strings.CalendarForDateLabel, 
+                selectedDateLocal.ToShortDateString());
 
             try
             {
@@ -86,7 +88,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("ShowAppointmentsForDate failed", ex);
-                MessageBox.Show("Unable to load calendar appointments.", "Error",
+                MessageBox.Show(Strings.CalendarLoadError, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

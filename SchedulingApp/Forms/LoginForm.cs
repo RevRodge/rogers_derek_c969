@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Data;
+﻿using SchedulingApp;
+using SchedulingApp.Data;
 using SchedulingApp.Models;
 using SchedulingApp.Utilities;
 using System;
@@ -35,7 +36,7 @@ namespace SchedulingApp.Forms
                 // Ignore if anything goes wrong
             }
 
-            // allow Enters to trigger login
+            // allow "Enter" to trigger login
             AcceptButton = btnLogin;
         }
 
@@ -52,7 +53,7 @@ namespace SchedulingApp.Forms
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show(GetText("LoginMissingFields"), GetText("LoginTitle"),
+                MessageBox.Show(Strings.LoginMissingFields, Strings.LoginTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -66,14 +67,14 @@ namespace SchedulingApp.Forms
             {
                 // If DB is down / credentials bad / etc.
                 Logger.LogError("Login DB error", ex);
-                MessageBox.Show(GetText("LoginDbError"), GetText("LoginTitle"),
+                MessageBox.Show(Strings.LoginDBError, Strings.LoginTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (user == null)
             {
-                MessageBox.Show(GetText("LoginInvalid"), GetText("LoginTitle"),
+                MessageBox.Show(Strings.LoginInvalid, Strings.LoginTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -97,15 +98,13 @@ namespace SchedulingApp.Forms
                     DateTime startLocal = TimeZoneHelper.UtcToLocal(next.StartUtc);
 
                     MessageBox.Show(
-                        string.Format(GetText("UpcomingApptYes"), startLocal),
-                        GetText("LoginTitle"),
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
+                        string.Format(Strings.UpcomingApptYes, startLocal),
+                        Strings.LoginTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show(GetText("UpcomingApptNo"), GetText("LoginTitle"),
+                    MessageBox.Show(
+                        Strings.UpcomingApptNo, Strings.LoginTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -121,6 +120,7 @@ namespace SchedulingApp.Forms
             main.FormClosed += (s, args) => Close();
             main.Show();
         }
+        //GetText replaced with strings.resx, leaving in for testing
         private string GetText(string key)
         {
             switch (key)

@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Data;
+﻿using SchedulingApp;
+using SchedulingApp.Data;
 using SchedulingApp.Models;
 using SchedulingApp.Utilities;
 using System;
@@ -34,8 +35,8 @@ namespace SchedulingApp.Forms
 
             BindDropdowns();
 
-            btnSave.Click += btnSave_Click;
-            btnCancel.Click += btnCancel_Click;
+            btnSave.Text = Strings.BtnSave;
+            btnCancel.Text = Strings.BtnCancel;
         }
 
         private void BindDropdowns()
@@ -56,6 +57,7 @@ namespace SchedulingApp.Forms
            List<User> users)
            : this(customers, users)
         {
+            //TODO: Needs es lang support
             Text = "Modify Appointment";
 
             Appointment = new Appointment
@@ -93,7 +95,7 @@ namespace SchedulingApp.Forms
             // Basic validation
             if (string.IsNullOrWhiteSpace(Appointment.Type))
             {
-                MessageBox.Show("Appointment type is required.", "Validation",
+                MessageBox.Show(Strings.ApptTypeRequired, Strings.InfoTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -101,11 +103,8 @@ namespace SchedulingApp.Forms
             // check business hours (Eastern)
             if (!TimeZoneHelper.IsWithinBusinessHoursEastern(startLocal, endLocal))
             {
-                MessageBox.Show(
-                    "Appointments must be scheduled Monday–Friday, 9:00 AM–5:00 PM Eastern Time.",
-                    "Business Hours",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show(Strings.ApptBusinessHoursError, Strings.InfoTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -127,11 +126,8 @@ namespace SchedulingApp.Forms
 
             if (overlap)
             {
-                MessageBox.Show(
-                    "This appointment overlaps an existing appointment.",
-                    "Overlap",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show(Strings.ApptOverlapError, Strings.InfoTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

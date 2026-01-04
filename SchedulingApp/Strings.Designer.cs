@@ -284,5 +284,14 @@ namespace SchedulingApp {
                 return ResourceManager.GetString("UpcomingApptYes", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to load Customer.
+        /// </summary>
+        internal static string UserLoadError {
+            get {
+                return ResourceManager.GetString("UserLoadError", resourceCulture);
+            }
+        }
     }
 }

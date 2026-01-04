@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Models;
+﻿using SchedulingApp;
+using SchedulingApp.Models;
 using SchedulingApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -19,20 +20,22 @@ namespace SchedulingApp.Forms
         {
             InitializeComponent();
 
+            //TODO: Needs es lang support
             Text = "Add Customer";
             chkActive.Checked = true;
 
-            btnSave.Click += btnSave_Click;
-            btnCancel.Click += btnCancel_Click;
+            btnSave.Text = Strings.BtnSave;
+            btnCancel.Text = Strings.BtnCancel;
         }
 
         public CustomerForm(Customer existingCustomer)
         {
             InitializeComponent();
 
+            //TODO: Needs es lang support
             Text = "Modify Customer";
-            btnSave.Click += btnSave_Click;
-            btnCancel.Click += btnCancel_Click;
+            btnSave.Text = Strings.BtnSave;
+            btnCancel.Text = Strings.BtnCancel;
 
             if (existingCustomer == null)
                 throw new ArgumentNullException(nameof(existingCustomer));
@@ -82,7 +85,7 @@ namespace SchedulingApp.Forms
             // CityId must parse to int
             if (!int.TryParse(txtCityId.Text.Trim(), out int cityId) || cityId <= 0)
             {
-                MessageBox.Show("CityId must be a valid positive number.", "Validation",
+                MessageBox.Show(Strings.CustomerCityIdInvalid, Strings.InfoTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -91,6 +94,7 @@ namespace SchedulingApp.Forms
             // validate with The Validator(TM)
             if (!Validator.TryValidateCustomer(Customer, out string error))
             {
+                //TODO: Needs es lang support
                 MessageBox.Show(error, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
