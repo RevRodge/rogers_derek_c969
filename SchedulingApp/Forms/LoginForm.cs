@@ -120,26 +120,5 @@ namespace SchedulingApp.Forms
             main.FormClosed += (s, args) => Close();
             main.Show();
         }
-        //GetText replaced with strings.resx, leaving in for testing
-        private string GetText(string key)
-        {
-            switch (key)
-            {
-                case "LoginTitle": 
-                    return "Login";
-                case "LoginMissingFields": 
-                    return "Please enter a username and password.";
-                case "LoginInvalid": 
-                    return "Invalid username or password.";
-                case "LoginDbError": 
-                    return "Unable to connect to the database.";
-                case "UpcomingApptYes": 
-                    return "You have an appointment within 15 minutes. Start: {0}";
-                case "UpcomingApptNo": 
-                    return "You have no appointments within the next 15 minutes.";
-                default: return key;
-            }
-        }
-
     }
 }

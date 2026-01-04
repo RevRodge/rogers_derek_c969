@@ -192,8 +192,13 @@
   <data name="UpcomingApptYes" xml:space="preserve">
     <value>Tiene una cita dentro de 15 minutos. Inicio: {0}</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UserLoadError" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="MainLoadUsersError" xml:space="preserve">
+    <value>No se pudieron cargar los usuarios.</value>
+  </data>
+  <data name="MainLoadCustomersError" xml:space="preserve">
+    <value>No se pudieron cargar los clientes.</value>
+  </data>
+  <data name="MainLoadAppointmentsError" xml:space="preserve">
+    <value>No se pudieron cargar las citas.</value>
   </data>
 </root>

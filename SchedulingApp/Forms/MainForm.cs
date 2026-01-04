@@ -94,8 +94,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadCustomers failed", ex);
-                //TODO: Needs es lang support
-                MessageBox.Show("Unable to load customers.", "Error",
+                MessageBox.Show(Strings.MainLoadCustomersError, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -109,8 +108,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadUsers failed", ex);
-                //TODO: Needs es lang support
-                MessageBox.Show("Unable to load users.", "Error",
+                MessageBox.Show(Strings.MainLoadUsersError, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 _users = new List<User>();
@@ -148,8 +146,7 @@ namespace SchedulingApp.Forms
             catch (Exception ex)
             {
                 Logger.LogError("LoadAppointments failed", ex);
-                //TODO: Needs es lang support
-                MessageBox.Show("Unable to load appointments.", "Error",
+                MessageBox.Show(Strings.MainLoadAppointmentsError, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

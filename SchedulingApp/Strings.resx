@@ -192,7 +192,13 @@
   <data name="UpcomingApptYes" xml:space="preserve">
     <value>You have an appointment within 15 minutes. Start: {0}</value>
   </data>
-  <data name="UserLoadError" xml:space="preserve">
-    <value>Unable to load Customer</value>
+  <data name="MainLoadUsersError" xml:space="preserve">
+    <value>Unable to load users.</value>
+  </data>
+  <data name="MainLoadCustomersError" xml:space="preserve">
+    <value>Unable to load Customers</value>
+  </data>
+  <data name="MainLoadAppointmentsError" xml:space="preserve">
+    <value>Unable to load appointments.</value>
   </data>
 </root>

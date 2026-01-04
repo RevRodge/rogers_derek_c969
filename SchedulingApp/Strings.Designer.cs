@@ -268,6 +268,33 @@ namespace SchedulingApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to load appointments..
+        /// </summary>
+        internal static string MainLoadAppointmentsError {
+            get {
+                return ResourceManager.GetString("MainLoadAppointmentsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to load Customers.
+        /// </summary>
+        internal static string MainLoadCustomersError {
+            get {
+                return ResourceManager.GetString("MainLoadCustomersError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to load users..
+        /// </summary>
+        internal static string MainLoadUsersError {
+            get {
+                return ResourceManager.GetString("MainLoadUsersError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no appointments within the next 15 minutes..
         /// </summary>
         internal static string UpcomingApptNo {
@@ -282,15 +309,6 @@ namespace SchedulingApp {
         internal static string UpcomingApptYes {
             get {
                 return ResourceManager.GetString("UpcomingApptYes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unable to load Customer.
-        /// </summary>
-        internal static string UserLoadError {
-            get {
-                return ResourceManager.GetString("UserLoadError", resourceCulture);
             }
         }
     }
