@@ -11,13 +11,14 @@ namespace SchedulingApp.Utilities
     {
         private static readonly object _lock = new object();
 
-        // Writes successful logins to login_history.txt
-        public static void LogLogin(string userName)
+        // Writes all logins or attempts to login_history.txt
+        public static void LogLogin(string userName, bool success)
         {
             if (string.IsNullOrWhiteSpace(userName))
                 userName = "UNKNOWN";
 
-            string line = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - LOGIN - {userName}";
+            string status = success ? "SUCCESS" : "FAILURE";
+            string line = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - LOGIN_ATTEMPT - {userName} - {status}";
 
             WriteLine("login_history.txt", line);
         }

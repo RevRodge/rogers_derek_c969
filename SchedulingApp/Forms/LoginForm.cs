@@ -72,6 +72,7 @@ namespace SchedulingApp.Forms
                 Logger.LogError("Login DB error", ex);
                 MessageBox.Show(Strings.LoginDBError, Strings.LoginTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.LogLogin(username, false);
                 return;
             }
 
@@ -79,11 +80,12 @@ namespace SchedulingApp.Forms
             {
                 MessageBox.Show(Strings.LoginInvalid, Strings.LoginTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Logger.LogLogin(username, false);
                 return;
             }
 
             // Successful login: log it to file
-            Logger.LogLogin(user.UserName);
+            Logger.LogLogin(user.UserName, true);
 
             // checks for upcoming appointment within 15 minutes (rubric requirement)
             try
