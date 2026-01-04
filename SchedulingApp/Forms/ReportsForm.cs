@@ -32,6 +32,7 @@ namespace SchedulingApp.Forms
         {
             var appts = _apptRepo.GetAll();
 
+            //lambda to pull "type" off of appts, group by it, count, and then sort a-z
             var report = appts
                 .GroupBy(a => a.Type)
                 .Select(g => new
@@ -50,6 +51,7 @@ namespace SchedulingApp.Forms
         {
             var appts = _apptRepo.GetAll();
 
+            // lambda to convert appt times to local, group by month and year, count and sort
             var report = appts
                 .Select(a => TimeZoneHelper.UtcToLocal(a.StartUtc))
                 .GroupBy(d => new { d.Year, d.Month })
@@ -66,10 +68,13 @@ namespace SchedulingApp.Forms
             dgvReport.DataSource = report;
         }
 
+        //displays appts scheduled by user
         private void btnUserSchedule_Click(object sender, EventArgs e)
         {
             var appts = _apptRepo.GetAll();
 
+
+            // lambda tort appts by user, then time, and displays as readable
             var report = appts
                 .OrderBy(a => a.UserName)
                 .ThenBy(a => a.StartUtc)
